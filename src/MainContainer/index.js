@@ -22,7 +22,8 @@ class MainContainer extends Component {
     this.getRestaurant()
   }
 
-
+  //get
+  
   getRestaurant = async() => {
     try{
       const response = await fetch( `http://localhost:9000/api/v1/restaurant`, {
@@ -43,20 +44,8 @@ class MainContainer extends Component {
       return err
     }
   }
-  //
-  // handleChange = (e) => {
-  //   const updatedChange = {
-  //     ...this.state.restaurant
-  //   };
-  //
-  //   updatedChange[e.target.name] = e.target.value;
-  //
-  //   this.setState({
-  //     restaurant: updatedChange
-  //   });
-  //
-  // }
 
+  //post!
 
   handleChange = (e) => {
     this.setState({
@@ -66,28 +55,7 @@ class MainContainer extends Component {
       }
     })
   }
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //
-  //   const updatedRestaurant = {
-  //     ...this.state.restaurant
-  //   }
-  //
-  //   this.addRestaruant(updatedRestaurant)
-  //
-  //   this.setState({
-  //     restaurant : {
-  //       name: '',
-  //       city: '',
-  //       state: '',
-  //       phNumber: '',
-  //       genres: ''
-  //     }
-  //   })
-  // }
 
-
-//post!
 
   addRestaruant  = async(e) => {
 
