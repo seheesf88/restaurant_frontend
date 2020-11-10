@@ -6,11 +6,23 @@ const ShowRestaurant = (props) => {
 
 console.log(props)
   const list = props.restaurantlist
-  console.log('??', typeof list);
-  const restaurantlist = list.map(restaurant => {
-    console.log(restaurant)
-    return(
 
+  //alphabeticall order
+  function order(a, b){
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+
+     return (a < b) ? -1 : (a > b) ? 1 : 0;
+  }
+
+  list.sort(function(a, b) {
+    return order(a.name, b.name);
+  })
+
+
+  const restaurantlist = list.slice(0, 11).map(restaurant => {
+
+    return(
         <tr key={restaurant._id}>
           <td>{restaurant.name}</td>
           <td>{restaurant.city}</td>
@@ -18,9 +30,7 @@ console.log(props)
           <td>{restaurant.phNumber}</td>
           <td>{restaurant.genres}</td>
           <td><button type="button" onClick={props.deleteRestaurant.bind(null, restaurant._id)}>DELETE</button></td>
-
         </tr>
-
     )
   })
 

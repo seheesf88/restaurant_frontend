@@ -14,7 +14,15 @@ class MainContainer extends Component {
         phNumber: '',
         genres: ''
       },
-      restaurantlist: []
+      restaurantlist: [
+        { name: 'a', city: 'San Francisco', state: 'CA', phNumber: '', genres: ''},
+        { name: 'z', city: 'Los Angeles', state: 'CA', phNumber: '', genres: ''},
+        { name: 'd', city: 'New York', state: 'NY', phNumber: '', genres: ''},
+        { name: 'k', city: 'Denver', state: 'CO', phNumber: '', genres: ''},
+        { name: 't', city: 'Austin', state: 'TX', phNumber: '', genres: ''},
+        { name: 'e', city: '', state: '', phNumber: '', genres: ''},
+        { name: 'b', city: '', state: '', phNumber: '', genres: ''},
+      ]
     }
   }
 
@@ -23,7 +31,7 @@ class MainContainer extends Component {
   }
 
   //get
-  
+
   getRestaurant = async() => {
     try{
       const response = await fetch( `http://localhost:9000/api/v1/restaurant`, {
@@ -115,7 +123,7 @@ class MainContainer extends Component {
 
         <div>Restaurant List</div>
         <form>
-          <input />
+          <input onChange={this.handleChange} value={this.state.searchString}/>
           <button>SEARCH</button>
         </form>
         <form onSubmit={this.addRestaruant}>
