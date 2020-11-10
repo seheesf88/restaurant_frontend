@@ -72,7 +72,10 @@ const ShowRestaurant = (props) => {
         return element
       }
     }
+
+  
   })
+
 
 return(
   <div>

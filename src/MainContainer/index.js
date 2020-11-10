@@ -14,18 +14,10 @@ class MainContainer extends Component {
         phNumber: '',
         genres: ''
       },
-      restaurantlist: [
-        { name: 'a', city: 'San Francisco', state: 'CA', phNumber: '', genres: ''},
-        { name: 'z', city: 'Los Angeles', state: 'CA', phNumber: '', genres: ''},
-        { name: 'd', city: 'New York', state: 'NY', phNumber: '', genres: ''},
-        { name: 'k', city: 'Denver', state: 'CO', phNumber: '', genres: ''},
-        { name: 't', city: 'Austin', state: 'TX', phNumber: '', genres: ''},
-        { name: 'e', city: '', state: '', phNumber: '', genres: ''},
-        { name: 'b', city: '', state: '', phNumber: '', genres: ''},
-      ],
+      restaurantlist: [],
       search: '',
-      byState: 'Select',
-      byGenre: 'Select',
+      byState: null,
+      byGenre: null,
     }
   }
 
@@ -89,6 +81,7 @@ class MainContainer extends Component {
       this.setState({
         restaurantlist: [...this.state.restaurantlist, parsedResponse],
       })
+
 
     }catch(err){
       return err
@@ -157,25 +150,33 @@ class MainContainer extends Component {
 
 
     return(
-      <div>
+      <div className="container">
+        <div className="font-weight-bold">Restaurant List</div>
 
-        <div>Restaurant List</div>
-        <form>
-          <input onChange={this.handleSearchChange} value={this.state.searchString}/>
-          <button>SEARCH</button>
-          <label>Filter By</label>
-          <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.restaurant.state}>
-            {states.map(st => {
-                return <option value={st} key={st} >{st}</option>
-            })}
-          </select>
-          <select name="genres" id="genres" onChange={this.handleByGenreChange} value={this.state.restaurant.genres}>
-            {genres.map(genre => {
-                return <option value={genre} key={genre} >{genre}</option>
-            })}
-          </select>
+        <div className="row container">
+          <div className="row">
+            <form className="col">
+              <input onChange={this.handleSearchChange} value={this.state.searchString}/>
+              <button>SEARCH</button>
+            </form>
 
-        </form>
+            <div className="row">
+            <label>Filter By</label>
+            <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.restaurant.state} >
+              {states.map(st => {
+                  return <option value={st} key={st} >{st}</option>
+              })}
+            </select>
+            <select name="genres" id="genres" onChange={this.handleByGenreChange} value={this.state.restaurant.genres}>
+              {genres.map(genre => {
+                  return <option value={genre} key={genre} >{genre}</option>
+              })}
+            </select>
+            </div>
+          </div>
+        </div>
+
+
         <form onSubmit={this.addRestaruant}>
           <label htmlFor="">Name:</label>
           <input name="name" onChange={this.handleChange} />
