@@ -22,7 +22,10 @@ class MainContainer extends Component {
         { name: 't', city: 'Austin', state: 'TX', phNumber: '', genres: ''},
         { name: 'e', city: '', state: '', phNumber: '', genres: ''},
         { name: 'b', city: '', state: '', phNumber: '', genres: ''},
-      ]
+      ],
+      search: '',
+      byState: 'Select',
+      byGenre: 'Select',
     }
   }
 
@@ -116,15 +119,62 @@ class MainContainer extends Component {
   }
 }
 
+  handleSearchChange = (e) => {
+    this.setState({
+        ...this.state.restaurant,
+        search : e.target.value
+    })
+
+    console.log('serch in the state',this.state.search)
+  }
+
+  handleByStateChange = (e) => {
+    this.setState({
+        ...this.state.restaurant,
+        byState : e.target.value
+    })
+  }
+
+  handleByGenreChange = (e) => {
+    this.setState({
+        ...this.state.restaurant,
+        byGenre : e.target.value
+    })
+    console.log('999', this.state.byGenre)
+  }
+
+
+
   render(){
-    console.log(this.state.restaurantlist)
+    const states = [
+      'Select', "All", 'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida', 'Georgia','Hawaii','Idaho','IllinoisIndiana',
+      'Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','MontanaNebraska','Nevada','New Hampshire',
+      'New Jersey', 'New Mexico', 'New York', 'North Carolina','North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'PennsylvaniaRhode Island',
+      'South Carolina','South Dakota','Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington','West Virginia','Wisconsin','Wyoming',
+    ]
+
+    const genres = ['Select', 'All', 'Fine Dining', 'Casual Dining', 'Family Style', 'Fast Food', 'Cafe', 'Buffet', 'Food Trucks']
+
+
     return(
       <div>
 
         <div>Restaurant List</div>
         <form>
-          <input onChange={this.handleChange} value={this.state.searchString}/>
+          <input onChange={this.handleSearchChange} value={this.state.searchString}/>
           <button>SEARCH</button>
+          <label>Filter By</label>
+          <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.restaurant.state}>
+            {states.map(st => {
+                return <option value={st} key={st} >{st}</option>
+            })}
+          </select>
+          <select name="genres" id="genres" onChange={this.handleByGenreChange} value={this.state.restaurant.genres}>
+            {genres.map(genre => {
+                return <option value={genre} key={genre} >{genre}</option>
+            })}
+          </select>
+
         </form>
         <form onSubmit={this.addRestaruant}>
           <label htmlFor="">Name:</label>
@@ -132,14 +182,28 @@ class MainContainer extends Component {
           <label htmlFor="">City:</label>
           <input name="city" onChange={this.handleChange} />
           <label htmlFor="">State:</label>
-          <input name="state" onChange={this.handleChange} />
+          <select name="state" id="state" onChange={this.handleChange} value={this.state.restaurant.state}>
+            {states.map(st => {
+                return <option value={st} key={st} >{st}</option>
+            })}
+          </select>
           <label htmlFor="">Phone Number:</label>
           <input name="phNumber" onChange={this.handleChange} />
           <label htmlFor="">Genres:</label>
-          <input name="genres" onChange={this.handleChange} />
+          <select name="genres" id="genres" onChange={this.handleChange} value={this.state.restaurant.genres}>
+            {genres.map(genre => {
+                return <option value={genre} key={genre} >{genre}</option>
+            })}
+          </select>
           <button>ADD</button>
         </form>
-        <ShowRestaurant restaurantlist={this.state.restaurantlist} deleteRestaurant={this.deleteRestaurant} />
+        <ShowRestaurant
+          restaurantlist={this.state.restaurantlist}
+          deleteRestaurant={this.deleteRestaurant}
+          search={this.state.search}
+          byState={this.state.byState}
+          byGenre={this.state.byGenre}
+        />
       </div>
     )
   }

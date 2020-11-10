@@ -4,8 +4,35 @@ import { withRouter, Link } from 'react-router-dom';
 
 const ShowRestaurant = (props) => {
 
-console.log(props)
   const list = props.restaurantlist
+  const searchWord = props.search.toLowerCase()
+  const byState = props.byState
+  const byGenre = props.byGenre
+  console.log('shiw', byGenre)
+
+  // if(searchWord){
+  //   console.log('true');
+  //   const searchRestarunt = (searchWord) => {
+  //     console.log('here?');
+  //     for(let i = 0; i < list.length; i++){
+  //       let each = list[i]
+  //
+  //       if(searchWord.indexOf(each['name']) > -1){
+  //         return(
+  //           <div>
+  //             here
+  //           </div>
+  //         )
+  //       }else{
+  //         console.log('no')
+  //       }
+  //     }
+  //
+  //   }
+  //
+  // }
+
+
 
   //alphabeticall order
   function order(a, b){
@@ -21,17 +48,30 @@ console.log(props)
 
 
   const restaurantlist = list.slice(0, 11).map(restaurant => {
+    const element = <tr key={restaurant._id}>
+                      <td>{restaurant.name}</td>
+                      <td>{restaurant.city}</td>
+                      <td>{restaurant.state}</td>
+                      <td>{restaurant.phNumber}</td>
+                      <td>{restaurant.genres}</td>
+                      <td><button type="button" onClick={props.deleteRestaurant.bind(null, restaurant._id)}>DELETE</button></td>
+                    </tr>
 
-    return(
-        <tr key={restaurant._id}>
-          <td>{restaurant.name}</td>
-          <td>{restaurant.city}</td>
-          <td>{restaurant.state}</td>
-          <td>{restaurant.phNumber}</td>
-          <td>{restaurant.genres}</td>
-          <td><button type="button" onClick={props.deleteRestaurant.bind(null, restaurant._id)}>DELETE</button></td>
-        </tr>
-    )
+    if(byState === 'All'){
+      return element
+    }else{
+      if(byState === restaurant.state){
+        return element
+      }
+    }
+
+    if(byGenre === 'All'){
+      return element
+    }else{
+      if(byGenre === restaurant.genres){
+        return element
+      }
+    }
   })
 
 return(
@@ -53,6 +93,7 @@ return(
           </tbody>
         </table>
     </div>
+    <div>{}</div>
   </div>
 
   )
