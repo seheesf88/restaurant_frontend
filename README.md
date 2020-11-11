@@ -1,5 +1,6 @@
 # Restaurant List App
 
+- Welcome to my app! and Thank you! 
 - This is a simple app that you can post/get/delete your data. 
 - This is Take home challenge for Software Engineer position for Charter.
 
@@ -12,7 +13,8 @@
 ## Deployment 
 
 - Frontend - https://myrestaurantlist.herokuapp.com/
-- Backend - https://backendmyapp.herokuapp.com/
+
+## Installation
 
 ## By SeHee 
 ## https://www.linkedin.com/in/sehee-son/
