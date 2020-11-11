@@ -29,7 +29,7 @@ class MainContainer extends Component {
 
   getRestaurant = async() => {
     try{
-      const response = await fetch( `http://localhost:9000/api/v1/restaurant`, {
+      const response = await fetch( `${process.env.REACT_APP_API}/api/v1/restaurant`, {
         credentials: 'include'
       });
 
@@ -63,7 +63,7 @@ class MainContainer extends Component {
   addRestaruant  = async(e) => {
 
     try {
-      const response = await fetch(`http://localhost:9000/api/v1/restaurant/`, {
+      const response = await fetch(`${process.env.REACT_APP_API}/api/v1/restaurant/`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(this.state.restaurant),
@@ -93,7 +93,7 @@ class MainContainer extends Component {
 
   deleteRestaurant = async(id, e) => {
   try{
-    const response = await fetch(`http://localhost:9000/api/v1/restaurant/` + id, {
+    const response = await fetch(`${process.env.REACT_APP_API}/api/v1/restaurant/` + id, {
       method: 'DELETE'
     })
 
