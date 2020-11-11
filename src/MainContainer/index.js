@@ -18,6 +18,9 @@ class MainContainer extends Component {
       search: '',
       byState: null,
       byGenre: null,
+      findRestaurant: '',
+      findStates: [],
+      findGenres: []
     }
   }
 
@@ -31,7 +34,6 @@ class MainContainer extends Component {
     try{
       const response = await fetch( `${process.env.REACT_APP_API}/api/v1/restaurant`, {
         credentials: 'include',
-        mode: "no-cors"
       });
 
       if(!response.ok){
@@ -119,33 +121,55 @@ class MainContainer extends Component {
 }
 
   handleSearchChange = (e) => {
+
     this.setState({
         ...this.state.restaurant,
-        search : e.target.value
-    })
-
-    console.log('serch in the state',this.state.search)
-  }
-
-  handleByStateChange = (e) => {
-    this.setState({
-        ...this.state.restaurant,
-        byState : e.target.value
-    })
-  }
-
-  handleByGenreChange = (e) => {
-    this.setState({
-        ...this.state.restaurant,
+        search : e.target.value,
+        byState : e.target.value,
         byGenre : e.target.value
     })
-    console.log('9', this.state.byGenre)
   }
 
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    let restaurant = this.state.search.toLowerCase();
+    let findState = this.state.byState;
+    let findGenre = this.state.byGenre;
+    let mylist = this.state.restaurantlist;
+    let stateArr = [];
+    let genreArr = [];
+
+
+    for(let i = 0; i < mylist.length; i++){
+      let ele = mylist[i]
+      console.log(ele['genres'])
+      if(ele['name'] === restaurant){
+        this.setState({
+          ...this.state,
+          findRestaurant : ele
+        })
+      }else if(ele['state'] === findState){
+        stateArr.push(ele)
+        this.setState({
+          ...this.state,
+          findStates : stateArr
+        })
+      }else if(ele['genres'] === findGenre){
+        genreArr.push(ele)
+        this.setState({
+          ...this.state,
+          findGenres : genreArr
+        })
+      }
+    }
+
+  }
 
 
   render(){
-
+    console.log(this.state.findGenres)
     const states = [
       'States', "All", 'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida', 'Georgia','Hawaii','Idaho','IllinoisIndiana',
       'Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','MontanaNebraska','Nevada','New Hampshire',
@@ -161,23 +185,25 @@ class MainContainer extends Component {
         <div className="font-weight-bold text-center mt-5 h1">Restaurant List</div>
 
         <div className="container mt-5">
-          <form className="row offset-3">
+          <form onSubmit={this.handleSubmit} className="row offset-3">
             <input onChange={this.handleSearchChange} value={this.state.searchString} className="col-5"/>
-            <button type="button" className="col-2 ml-2 btn btn-secondary">SEARCH</button>
-          </form>
+
+
           <div className="row mt-3 offset-2">
             <label className="mr-2 mt-2">Filter By:</label>
-            <select className="col-3 mr-3" name="state" id="state" onChange={this.handleByStateChange} value={this.state.state} >
+            <select className="col-3 mr-3" name="state" id="state" onChange={this.handleSearchChange} value={this.state.state} >
               {states.map(st => {
                   return <option value={st} key={st} >{st}</option>
               })}
             </select>
-            <select className="col-3" name="genres" id="genres" onChange={this.handleByGenreChange} value={this.state.genres}>
+            <select className="col-3" name="genre" id="genre" onChange={this.handleSearchChange} value={this.state.genre}>
               {genres.map(genre => {
                   return <option value={genre} key={genre} >{genre}</option>
               })}
             </select>
           </div>
+                <button className="col-2 ml-2 btn btn-secondary">SEARCH</button>
+            </form>
         </div>
 
         <form onSubmit={this.addRestaruant} className="contianer mt-5 offset-1">
@@ -215,8 +241,9 @@ class MainContainer extends Component {
           restaurantlist={this.state.restaurantlist}
           deleteRestaurant={this.deleteRestaurant}
           search={this.state.search}
-          byState={this.state.byState}
-          byGenre={this.state.byGenre}
+          findRestaurant={this.state.findRestaurant}
+          findStates={this.state.findStates}
+          findGenres={this.state.findGenres}
         />
       </div>
     )
