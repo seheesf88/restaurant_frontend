@@ -20,7 +20,13 @@
    npm install
    npm start
 ```
-   
+```
+   git clone https://github.com/seheesf88/charter_backend-.git
+   npm install
+   mongod
+   mongo//new tab
+   nodemon//new tab
+```   
    
 ## By SeHee 
 ## https://www.linkedin.com/in/sehee-son/
