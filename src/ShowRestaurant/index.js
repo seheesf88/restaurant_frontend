@@ -57,22 +57,22 @@ const ShowRestaurant = (props) => {
                       <td><button type="button" onClick={props.deleteRestaurant.bind(null, restaurant._id)}>DELETE</button></td>
                     </tr>
 
-    if(byState === 'All'){
-      return element
-    }else{
-      if(byState === restaurant.state){
-        return element
-      }
-    }
-
-    if(byGenre === 'All'){
-      return element
-    }else{
-      if(byGenre === restaurant.genres){
-        return element
-      }
-    }
-
+    // if(byState === 'All'){
+    //   return element
+    // }else{
+    //   if(byState === restaurant.state){
+    //     return element
+    //   }
+    // }
+    //
+    // if(byGenre === 'All'){
+    //   return element
+    // }else{
+    //   if(byGenre === restaurant.genres){
+    //     return element
+    //   }
+    // }
+    return element
 
   })
 

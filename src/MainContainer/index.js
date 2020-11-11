@@ -78,6 +78,8 @@ class MainContainer extends Component {
 
       const parsedResponse = await response.json();
 
+      console.log('parsedResponse', parsedResponse);
+
       this.setState({
         restaurantlist: [...this.state.restaurantlist, parsedResponse],
       })
@@ -154,14 +156,14 @@ class MainContainer extends Component {
       <div className="container">
         <div className="font-weight-bold">Restaurant List</div>
 
-        <div className="row container">
+        <div className="container">
           <div className="row">
-            <form className="col">
+            <form className="">
               <input onChange={this.handleSearchChange} value={this.state.searchString}/>
               <button>SEARCH</button>
             </form>
-
-            <div className="row">
+          </div>
+          <div className="row">
             <label>Filter By</label>
             <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.state} >
               {states.map(st => {
@@ -173,9 +175,10 @@ class MainContainer extends Component {
                   return <option value={genre} key={genre} >{genre}</option>
               })}
             </select>
-            </div>
           </div>
         </div>
+
+
 
 
         <form onSubmit={this.addRestaruant}>
