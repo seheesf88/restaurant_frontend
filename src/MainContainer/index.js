@@ -153,18 +153,17 @@ class MainContainer extends Component {
 
 
     return(
-      <div className="container">
-        <div className="font-weight-bold">Restaurant List</div>
+      <div>
+        <div className="font-weight-bold text-center mt-5 h1">Restaurant List</div>
 
-        <div className="container">
-          <div className="row">
-            <form className="">
-              <input onChange={this.handleSearchChange} value={this.state.searchString}/>
-              <button>SEARCH</button>
+        <div className="container mt-5">
+            <form className="row border">
+              <input onChange={this.handleSearchChange} value={this.state.searchString} className="col-5"/>
+              <button className="ml-2 btn-primary border">SEARCH</button>
             </form>
-          </div>
-          <div className="row">
-            <label>Filter By</label>
+
+          <div className="row mt-2">
+            <label className="mr-2 mt-2">Filter By:</label>
             <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.state} >
               {states.map(st => {
                   return <option value={st} key={st} >{st}</option>
