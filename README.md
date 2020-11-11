@@ -15,9 +15,11 @@
 - Frontend - https://myrestaurantlist.herokuapp.com/
 
 ## Installation
-```git clone https://github.com/seheesf88/restaurant_frontend.git
-   npm install
-   npm start```
+```git clone https://github.com/seheesf88/restaurant_frontend.git```
+```npm install```
+```npm start```
+   
+   
    
 ## By SeHee 
 ## https://www.linkedin.com/in/sehee-son/
