@@ -162,12 +162,12 @@ class MainContainer extends Component {
 
             <div className="row">
             <label>Filter By</label>
-            <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.restaurant.state} >
+            <select name="state" id="state" onChange={this.handleByStateChange} value={this.state.state} >
               {states.map(st => {
                   return <option value={st} key={st} >{st}</option>
               })}
             </select>
-            <select name="genres" id="genres" onChange={this.handleByGenreChange} value={this.state.restaurant.genres}>
+            <select name="genres" id="genres" onChange={this.handleByGenreChange} value={this.state.genres}>
               {genres.map(genre => {
                   return <option value={genre} key={genre} >{genre}</option>
               })}
