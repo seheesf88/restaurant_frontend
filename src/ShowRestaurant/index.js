@@ -5,6 +5,14 @@ const ShowRestaurant = (props) => {
   const list = props.restaurantlist;
   const findStates = props.findStates;
   const findGenres = props.findGenres;
+  const err = <tr>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+              </tr>
 
   //alphabeticall order
   function order(a, b){
@@ -69,6 +77,25 @@ const ShowRestaurant = (props) => {
         )
   });
 
+  let final = restaurantlist
+
+  if(props.search){
+    final = findRestaurant
+  }
+
+  if(props.findStates.length > 0){
+    final = byState
+  }
+
+  if(props.findGenres.length > 0){
+    final = byGenre
+  }
+
+  if(props.byState === 'All' || props.byGenre === 'All'){
+    final = restaurantlist
+  }
+  console.log('final', final.key)
+
 
 
 return(
@@ -82,15 +109,14 @@ return(
               <th scope="col">STATE</th>
               <th scope="col">PHONE NUMBER</th>
               <th scope="col">GENRES</th>
-              <th scope="col" className="pr-0">delete</th>
+              <th scope="col" className="pr-0">DELETE</th>
             </tr>
           </thead>
           <tbody>
-             { restaurantlist }
+             { final.key === null ? err : final}
           </tbody>
         </table>
     </div>
-    <div>{}</div>
   </div>
 
   )

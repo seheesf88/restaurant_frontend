@@ -186,23 +186,25 @@ class MainContainer extends Component {
 
         <div className="container mt-5">
           <form onSubmit={this.handleSubmit} className="row offset-3">
-            <input onChange={this.handleSearchChange} value={this.state.searchString} className="col-5"/>
-
-
-          <div className="row mt-3 offset-2">
-            <label className="mr-2 mt-2">Filter By:</label>
-            <select className="col-3 mr-3" name="state" id="state" onChange={this.handleSearchChange} value={this.state.state} >
-              {states.map(st => {
-                  return <option value={st} key={st} >{st}</option>
-              })}
-            </select>
-            <select className="col-3" name="genre" id="genre" onChange={this.handleSearchChange} value={this.state.genre}>
-              {genres.map(genre => {
-                  return <option value={genre} key={genre} >{genre}</option>
-              })}
-            </select>
-          </div>
-                <button className="col-2 ml-2 btn btn-secondary">SEARCH</button>
+            <div className="row col-6">
+              <input onChange={this.handleSearchChange} value={this.state.searchString} className="container"/>
+                <div className="row mt-3 ml-1">
+                  <label className="mt-2 mr-2">Filter By:</label>
+                  <select className="col-4 mr-1" name="state" id="state" onChange={this.handleSearchChange} value={this.state.state} >
+                    {states.map(st => {
+                        return <option value={st} key={st} >{st}</option>
+                    })}
+                  </select>
+                  <select className="col-4" name="genre" id="genre" onChange={this.handleSearchChange} value={this.state.genre}>
+                    {genres.map(genre => {
+                        return <option value={genre} key={genre} >{genre}</option>
+                    })}
+                  </select>
+                </div>
+              </div>
+              <div className="col-2 ">
+                <button className="btn btn-secondary py-4 mt-1 ml-1">SEARCH</button>
+              </div>
             </form>
         </div>
 
@@ -244,6 +246,7 @@ class MainContainer extends Component {
           findRestaurant={this.state.findRestaurant}
           findStates={this.state.findStates}
           findGenres={this.state.findGenres}
+          byState={this.state.byState}
         />
       </div>
     )
