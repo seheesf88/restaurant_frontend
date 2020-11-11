@@ -4,11 +4,11 @@ import { withRouter, Link } from 'react-router-dom';
 
 const ShowRestaurant = (props) => {
 
-  const list = props.restaurantlist
-  const searchWord = props.search.toLowerCase()
-  const byState = props.byState
-  const byGenre = props.byGenre
-
+  const list = props.restaurantlist;
+  const searchWord = props.search.toLowerCase();
+  const byState = props.byState;
+  const byGenre = props.byGenre;
+  const err = <div>Sorry, I can't find that restaurant!</div>
   console.log('this is list',list)
   // if(searchWord){
   //   console.log('true');

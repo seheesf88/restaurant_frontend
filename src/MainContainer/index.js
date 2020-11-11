@@ -30,7 +30,8 @@ class MainContainer extends Component {
   getRestaurant = async() => {
     try{
       const response = await fetch( `${process.env.REACT_APP_API}/api/v1/restaurant`, {
-        credentials: 'include'
+        credentials: 'include',
+        mode: "no-cors"
       });
 
       if(!response.ok){
