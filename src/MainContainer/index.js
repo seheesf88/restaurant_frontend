@@ -133,7 +133,7 @@ class MainContainer extends Component {
         ...this.state.restaurant,
         byGenre : e.target.value
     })
-    console.log('999', this.state.byGenre)
+    console.log('9', this.state.byGenre)
   }
 
 
