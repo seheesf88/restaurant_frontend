@@ -8,8 +8,8 @@ const ShowRestaurant = (props) => {
   const searchWord = props.search.toLowerCase()
   const byState = props.byState
   const byGenre = props.byGenre
-  console.log('shiw', byGenre)
 
+  console.log('this is list',list)
   // if(searchWord){
   //   console.log('true');
   //   const searchRestarunt = (searchWord) => {
@@ -73,7 +73,7 @@ const ShowRestaurant = (props) => {
       }
     }
 
-  
+
   })
 
 
