@@ -6,16 +6,16 @@
 
 ## Tech Stack
 
-Frontend - ReactJs/Boostrap
-Backend - NodeJs/MongoDB
+- Frontend - ReactJs/Boostrap
+- Backend - NodeJs/MongoDB
 
 ## Deployment 
 
-Frontend - https://myrestaurantlist.herokuapp.com/
-Backend - https://backendmyapp.herokuapp.com/
+- Frontend - https://myrestaurantlist.herokuapp.com/
+- Backend - https://backendmyapp.herokuapp.com/
 
-### By SeHee 
-### https://www.linkedin.com/in/sehee-son/
-### https://seheeson.com
+## By SeHee 
+## https://www.linkedin.com/in/sehee-son/
+## https://seheeson.com
 
 
