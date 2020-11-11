@@ -139,6 +139,7 @@ class MainContainer extends Component {
 
 
   render(){
+    console.log(this.getRestaurant)
     const states = [
       'Select', "All", 'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida', 'Georgia','Hawaii','Idaho','IllinoisIndiana',
       'Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','MontanaNebraska','Nevada','New Hampshire',
